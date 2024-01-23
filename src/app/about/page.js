@@ -24,15 +24,15 @@ export default function About() {
               Biography
             </h2>
             <Tabs defaultValue="passion" className="w-[400px]">
-              <TabsList className="grid w-full grid-cols-3">
+              <TabsList className="grid w-full grid-cols-3 bg-dark text-light dark:bg-light dark:text-dark">
                 <TabsTrigger value="passion">Passion</TabsTrigger>
                 <TabsTrigger value="craft">Craft</TabsTrigger>
                 <TabsTrigger value="innovation">Innovation</TabsTrigger>
               </TabsList>
               <TabsContent value="passion">
-                <Card>
+                <Card className="dark:bg-dark dark:text-light dark:border-light">
                   <CardHeader>
-                    <CardTitle>Passion in Pixels</CardTitle>
+                    <CardTitle className="text-xl">Passion in Pixels</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
                     <ul className="list-disc">
@@ -40,11 +40,13 @@ export default function About() {
                         I&apos;m Mukul Padwal, a dedicated full stack developer
                         with a year of hands-on experience.
                       </li>
+                      <br />
                       <li>
                         My dedication lies in translating concepts into digital
                         realities, using code as a canvas for both functionality
                         and visually captivating masterpieces.
                       </li>
+                      <br />
                       <li>
                         Throughout my journey in web development, innovation has
                         been the driving force, shaping a path marked by
@@ -55,9 +57,9 @@ export default function About() {
                 </Card>
               </TabsContent>
               <TabsContent value="craft">
-                <Card>
+                <Card className="dark:bg-dark dark:text-light dark:border-light">
                   <CardHeader>
-                    <CardTitle>Craft of Coding</CardTitle>
+                    <CardTitle className="text-xl">Craft of Coding</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
                     <ul className="list-disc">
@@ -65,11 +67,13 @@ export default function About() {
                         From captivating front-end designs to robust back-end
                         solutions, I create holistic web experiences.
                       </li>
+                      <br />
                       <li>
                         My toolbox includes the latest frameworks, languages,
                         and design principles, ensuring solutions meet current
                         standards and future challenges.
                       </li>
+                      <br />
                       <li>
                         I believe in the art of coding as a dynamic and evolving
                         process.
@@ -79,9 +83,9 @@ export default function About() {
                 </Card>
               </TabsContent>
               <TabsContent value="innovation">
-                <Card>
+                <Card className="dark:bg-dark dark:text-light dark:border-light">
                   <CardHeader>
-                    <CardTitle>Innovation as a Driving Force</CardTitle>
+                    <CardTitle className="text-xl">Innovation as a Driving Force</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
                     <ul className="list-disc">
@@ -89,10 +93,12 @@ export default function About() {
                         Staying on the cutting edge is key; I embrace emerging
                         technologies and the latest industry trends.
                       </li>
+                      <br />
                       <li>
                         My solutions are not just current but future-ready,
                         reflecting a commitment to innovation.
                       </li>
+                      <br />
                       <li>
                         Innovation is the heartbeat of my development process.
                       </li>
@@ -113,6 +119,8 @@ export default function About() {
               width={"100%"}
               height={"100%"}
               className="rounded-2xl"
+              priority={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
 
@@ -121,48 +129,54 @@ export default function About() {
               Beyond the Code:
             </h2>
             <Tabs defaultValue="communication" className="w-[400px]">
-              <TabsList className="grid w-full grid-cols-3">
+              <TabsList className="grid w-full grid-cols-3 bg-dark text-light dark:bg-light dark:text-dark">
                 <TabsTrigger value="communication">Communication</TabsTrigger>
                 <TabsTrigger value="balance">Balance</TabsTrigger>
                 <TabsTrigger value="build">Build</TabsTrigger>
               </TabsList>
               <TabsContent value="communication">
-                <Card>
+                <Card className="dark:bg-dark dark:text-light dark:border-light">
                   <CardHeader>
-                    <CardTitle>Clear Communication</CardTitle>
+                    <CardTitle className="text-xl">Clear Communication</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
                     <ul className="list-disc">
                       <li>Code enthusiast with a knack for effective communication.</li>
+                      <br />
                       <li>Reliable partner on your digital journey to success.</li>
+                      <br />
                       <li>Communication as the bridge linking code to your goals.</li>
                     </ul>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="balance">
-                <Card>
+                <Card className="dark:bg-dark dark:text-light dark:border-light">
                   <CardHeader>
-                    <CardTitle>Creative Balance</CardTitle>
+                    <CardTitle className="text-xl">Creative Balance</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
                     <ul className="list-disc">
                       <li>More than a developer—a creative thinker.</li>
+                      <br />
                       <li>Beyond code, I add creativity for exceptional digital experiences.</li>
+                      <br />
                       <li>Blending technology with creativity in every project.</li>
                     </ul>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="build">
-                <Card>
+                <Card className="dark:bg-dark dark:text-light dark:border-light">
                   <CardHeader>
-                    <CardTitle>Build Together</CardTitle>
+                    <CardTitle className="text-xl">Build Together</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
                     <ul className="list-disc">
                       <li>Ambitious startup or revamping online presence? Let&apos;s collaborate.</li>
+                      <br />
                       <li>Portfolio filled with innovation, collaboration, and extraordinary projects.</li>
+                      <br />
                       <li>Enter a space where technology meets creativity, shaping vibrant digital realities.</li>
                     </ul>
                   </CardContent>

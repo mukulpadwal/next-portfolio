@@ -3,13 +3,13 @@
 import Link from "next/link";
 import React from "react";
 import Logo from "./Logo";
-import { usePathname } from "next/navigation";
-import {TwitterIcon, LinkedInIcon, GithubIcon, HashNodeIcon} from "./Icons";
+import {TwitterIcon, LinkedInIcon, GithubIcon, HashNodeIcon, SunIcon, MoonIcon} from "./Icons";
 import {motion} from 'framer-motion';
+import useThemeSwitcher from "./hooks/useThemeSwitcher";
+import { usePathname } from "next/navigation";
 
 const CustomLink = ({ href, title, className = "" }) => {
-  const pathname  = usePathname();
-  console.log(pathname);
+  const pathname = usePathname();
   return (
     <Link href={href} className={`${className} relative group`}>
       {title}
@@ -25,6 +25,8 @@ const CustomLink = ({ href, title, className = "" }) => {
 };
 
 const NavBar = () => {
+  const [mode, setMode] = useThemeSwitcher('dark');
+
   return (
     <header className="w-full px-32 py-8 font-medium flex items-center justify-between bg-light text-dark dark:bg-dark dark:text-light">
       <nav>
@@ -46,9 +48,15 @@ const NavBar = () => {
         <motion.a href="https://www.linkedin.com/in/mukulpadwal/" rel="noreferrer" target="_blank" className="mx-3 w-6" whileHover={{y: -2}} whileTap={{scale:0.9}}>
           <LinkedInIcon />
         </motion.a>
-        <motion.a href="https://mukulpadwal.hashnode.dev/" rel="noreferrer" target="_blank" className="ml-3 w-6" whileHover={{y: -2}} whileTap={{scale:0.9}}>
+        <motion.a href="https://mukulpadwal.hashnode.dev/" rel="noreferrer" target="_blank" className="mx-3 w-6" whileHover={{y: -2}} whileTap={{scale:0.9}}>
           <HashNodeIcon />
         </motion.a>
+
+        <motion.button className="ml-3 w-6" whileHover={{y: -2}} whileTap={{scale:0.9}} onClick={() => setMode(mode === "light" ? "dark" : "light")}>
+          {
+            mode === "dark" ? <SunIcon className="fill-dark" /> : <MoonIcon className="fill-dark" />
+          }
+        </motion.button>
       </nav>
     </header>
   );
