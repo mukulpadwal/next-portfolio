@@ -10,7 +10,7 @@ const Details = ({ type, time, place, grade }) => {
   return (
     <li
       ref={ref}
-      className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-start justify-between"
+      className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-start justify-between sm:w-[90%]"
     >
       <LiIcon reference={ref} />
       <motion.div
@@ -18,11 +18,12 @@ const Details = ({ type, time, place, grade }) => {
         whileInView={{ y: 0 }}
         transition={{ duration: 0.5, type: "spring" }}
       >
-        <h3 className="capitalize font-bold text-2xl">{type}</h3>
-        <span className="capitalize font-medium text-dark/75 dark:text-light/75">
+        <h3 className="capitalize font-bold text-2xl sm:text-xl">{type}</h3>
+        <span className="capitalize font-medium text-dark/75 dark:text-light/75 sm:text-sm">
           {time} | {place}
         </span>
-        <p className="font-medium w-full">{grade}</p>
+        <br /><br />
+        <p className="font-medium w-full sm:text-sm">{grade}</p>
       </motion.div>
     </li>
   );
@@ -36,11 +37,11 @@ const Education = () => {
   });
 
   return (
-    <div className="my-64">
-      <h2 className="font-bold text-8xl mb-32 w-full text-center">Education</h2>
-      <div ref={ref} className="w-[75%] mx-auto relative">
+    <div className="my-64 sm:my-24">
+      <h2 className="font-bold text-8xl mb-32 w-full text-center sm:text-5xl sm:mb-16">Education</h2>
+      <div ref={ref} className="w-[75%] mx-auto relative sm:w-full">
         <motion.div
-          className="absolute left-9 top-0 bg-dark dark:bg-light w-[4px] h-full origin-top"
+          className="absolute left-9 top-0 bg-dark dark:bg-light w-[4px] h-full origin-top sm:left-0"
           style={{ scaleY: scrollYProgress }}
         />
 

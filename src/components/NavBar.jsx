@@ -67,7 +67,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className="relative w-full px-32 py-8 font-medium flex items-center justify-between bg-light text-dark dark:bg-dark dark:text-light">
+    <header className="relative w-full px-32 py-8 font-medium flex items-center justify-between bg-light text-dark dark:bg-dark dark:text-light lg:px-16 md:px-12 sm:px-8">
       {/* Hamburger Menu for responsive screens */}
       <button
         className="flex-col justify-center items-center hidden lg:flex"
@@ -75,7 +75,7 @@ const NavBar = () => {
       >
         <span
           className={`bg-dark dark:bg-light transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm -translate-y-0.5 ${
-            isOpened ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+            isOpened ? "rotate-45 translate-y-2.5" : "-translate-y-0.5"
           }`}
         ></span>
         <span
@@ -85,7 +85,7 @@ const NavBar = () => {
         ></span>
         <span
           className={`bg-dark dark:bg-light transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm translate-y-0.5 ${
-            isOpened ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+            isOpened ? "-rotate-45 -translate-y-0.5" : "translate-y-0.5"
           }`}
         ></span>
       </button>

@@ -15,9 +15,9 @@ export const promise = databases.listDocuments(
       "type",
       "title",
       "summary",
-      "thumbnailImgUrl",
+      "thumbNailImg",
       "deployedLink",
-      "githubrepoLink"
+      "githubRepoLink"
   ]),
   ]
 );

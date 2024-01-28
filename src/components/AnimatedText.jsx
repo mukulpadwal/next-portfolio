@@ -33,7 +33,7 @@ const alphabet = {
 const AnimatedText = ({ text, className = "" }) => {
   return (
     <div
-      className={`w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden`}
+      className={`w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden sm:py-4`}
     >
       <motion.h1
         className={`inline-block w-full font-bold capitalize text-8xl text-dark dark:text-light ${className}`}
