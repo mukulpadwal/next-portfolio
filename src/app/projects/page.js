@@ -1,7 +1,7 @@
 "use client";
 
 import AnimatedText from "@/components/AnimatedText";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import FeaturedProject from "@/components/FeaturedProject";
 import Project from "@/components/Project";
 import { promise } from "@/appwrite/appwrite";
@@ -10,18 +10,21 @@ import TransitionEffect from "@/components/TransitionEffect";
 export default function Projects() {
   const [allProjects, setAllProjectsData] = useState([]);
 
+  const fetchProjects = async () => {
+    await promise.then(
+      function (response) {
+        setAllProjectsData(response.documents);
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+  }
+
   useEffect(() => {
-    (async () => {
-      await promise.then(
-        function (response) {
-          setAllProjectsData(response.documents);
-        },
-        function (error) {
-          console.log(error);
-        }
-      );
-    })();
+    fetchProjects();
   }, []);
+
 
   return (
     <>

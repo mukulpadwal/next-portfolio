@@ -17,6 +17,7 @@ const FeaturedBlog = ({ thumbNailImg, title, time, summary, link }) => {
         className="w-full cursor-pointer overflow-hidden rounded-lg inline-block"
       >
         <FramerImage
+          loader={() => thumbNailImg}
           src={thumbNailImg}
           alt={title}
           className="w-full h-auto rounded-3xl"
@@ -34,7 +35,9 @@ const FeaturedBlog = ({ thumbNailImg, title, time, summary, link }) => {
         </h2>
       </Link>
       <p className="text-sm mb-2">{summary}</p>
-      <span className="text-primary dark:text-primaryDark font-semibold">{time}</span>
+      <span className="text-primary dark:text-primaryDark font-semibold">
+        {`${time} minutes`}
+      </span>
     </li>
   );
 };

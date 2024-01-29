@@ -20,7 +20,7 @@ const Project = ({ type, title, thumbNailImg, link, gitHubLink }) => {
           width={100}
           height={100}
           priority={true}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+          unoptimized
         />
       </Link>
 

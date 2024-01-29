@@ -34,7 +34,7 @@ const FeaturedProject = ({
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
           priority={true}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+          unoptimized
         />
       </Link>
 
@@ -51,7 +51,9 @@ const FeaturedProject = ({
             {title}
           </h2>
         </Link>
-        <p className="my-2 font-medium text-dark dark:text-light sm:text-sm">{summary}</p>
+        <p className="my-2 font-medium text-dark dark:text-light sm:text-sm">
+          {summary}
+        </p>
         <div className="mt-2 flex items-center">
           <Link href={gitHubLink} target="_blank" className="w-10">
             <GithubIcon className="fill-dark dark:fill-light" />

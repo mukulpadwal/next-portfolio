@@ -35,12 +35,15 @@ const MovingImg = ({ title, thumbNailImg, link }) => {
         {title}
       </h2>
       <FramerImage
+        loader={() => thumbNailImg}
         style={{ x: x, y: y }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1, transition: { duration: 0.2 } }}
         ref={imgRef}
         src={thumbNailImg}
         alt={title}
+        height={100}
+        width={100}
         className="z-10 w-96 h-auto hidden absolute rounded-lg"
       />
     </Link>
@@ -52,11 +55,13 @@ const Blog = ({ thumbNailImg, title, date, link }) => {
     <motion.li
       initial={{ y: 200 }}
       whileInView={{ y: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
-      viewport={{once: false}}
+      viewport={{ once: true }}
       className="relative w-full p-4 py-6 my-4 rounded-xl flex items-center justify-between bg-light dark:bg-dark text-dark dark:text-light first:mt-0 border border-solid border-dark dark:border-light border-r-4 border-b-4 sm:flex-col sm:items-start"
     >
       <MovingImg title={title} thumbNailImg={thumbNailImg} link={link} />
-      <span className="text-primary dark:text-primaryDark font-semibold pl-4 sm:pl-0 xs:text-sm">{date}</span>
+      <span className="text-primary dark:text-primaryDark font-semibold pl-4 sm:pl-0 xs:text-sm">
+        {`${new Date(date).getDate()}/${new Date(date).getMonth() + 1}/${new Date(date).getFullYear()}`}
+      </span>
     </motion.li>
   );
 };
