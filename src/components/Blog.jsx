@@ -44,7 +44,7 @@ const MovingImg = ({ title, thumbNailImg, link }) => {
         alt={title}
         height={100}
         width={100}
-        className="z-10 w-96 h-auto hidden absolute rounded-lg"
+        className="z-10 w-96 h-auto hidden absolute rounded-lg md:!hidden"
       />
     </Link>
   );
