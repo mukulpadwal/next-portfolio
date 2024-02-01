@@ -7,6 +7,7 @@ const conf = {
     process.env.NEXT_PUBLIC_APP_APPWRITE_COLLECTION_ID
   ),
   hashnodeHost: String(process.env.NEXT_PUBLIC_APP_HASHNODE_HOST),
+  resumeLink: String(process.env.NEXT_APP_RESUME_LINK),
 };
 
 export default conf;
