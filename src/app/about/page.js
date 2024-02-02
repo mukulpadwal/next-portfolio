@@ -19,13 +19,13 @@ export default function About() {
             text="Passion Fuels Purpose!"
             className="!text-8xl !text-center lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl mb-12 lg:mb-4"
           />
-          <div className="py-8 grid grid-cols-12 gap-16 lg:grid-cols-1 xl:grid-cols-12">
-            <div className="col-span-4 flex flex-col items-start justify-start lg:order-2 lg:items-center lg:justify-center">
+          <div className="w-full py-16 flex md:gap-16 md:flex-col lg:flex-wrap gap-8">
+            <div className="w-full flex flex-col items-start justify-start lg:order-2 lg:items-center lg:justify-center">
               <h2 className="mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75">
                 Biography
               </h2>
               <Tabs defaultValue="passion" className="w-[400px] lg:w-full">
-                <TabsList className="grid w-full grid-cols-3 bg-dark text-light dark:bg-light dark:text-dark">
+                <TabsList className="grid grid-cols-3 bg-dark text-light dark:bg-light dark:text-dark">
                   <TabsTrigger value="passion">Passion</TabsTrigger>
                   <TabsTrigger value="craft">Craft</TabsTrigger>
                   <TabsTrigger value="innovation">Innovation</TabsTrigger>
@@ -114,7 +114,7 @@ export default function About() {
               </Tabs>
             </div>
 
-            <div className="col-span-4 relative h-max rounded-2xl border-2 border-solid border-dark bg-light dark:bg-dark dark:border-light p-8 sm:p-2 lg:order-1 lg:flex lg:items-center lg:justify-center">
+            <div className="relative w-full h-max rounded-2xl border-2 border-solid border-dark bg-light dark:bg-dark dark:border-light p-6 sm:p-2 lg:order-1 lg:flex lg:items-center lg:justify-center xl:hidden">
               <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light" />
               <Image
                 src={profileImage}
@@ -122,11 +122,11 @@ export default function About() {
                 width={"100%"}
                 height={"100%"}
                 className="rounded-2xl"
-                priority={true}
+                priority
               />
             </div>
 
-            <div className="col-span-4 flex flex-col items-start justify-start lg:order-3 lg:items-center lg:justify-center">
+            <div className="flex flex-col items-start justify-start lg:order-3 lg:items-center lg:justify-center w-full">
               <h2 className="mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75">
                 Beyond the Code:
               </h2>
@@ -134,7 +134,7 @@ export default function About() {
                 defaultValue="communication"
                 className="w-[400px] lg:w-full"
               >
-                <TabsList className="grid w-full grid-cols-3 bg-dark text-light dark:bg-light dark:text-dark">
+                <TabsList className="grid grid-cols-3 bg-dark text-light dark:bg-light dark:text-dark">
                   <TabsTrigger value="communication">Communication</TabsTrigger>
                   <TabsTrigger value="balance">Balance</TabsTrigger>
                   <TabsTrigger value="build">Build</TabsTrigger>

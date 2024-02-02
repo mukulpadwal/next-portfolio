@@ -89,7 +89,7 @@ const Skill = ({ name, x, y }) => {
 const Skills = () => {
   return (
     <>
-      <h1 className="font-bold text-8xl mt-32 lg:my-32 w-full text-center md:text-6xl md:my-24">
+      <h1 className="font-bold text-8xl my-28 lg:my-32 w-full text-center md:text-6xl md:my-24">
         Skills
       </h1>
       <div className="w-full h-[100vh] relative bg-circularLight dark:bg-circularDark flex items-center justify-center mb-64 md:mb-32 rounded-full lg:bg-circularLightLg lg:dark:bg-circularDarkLg md:bg-circularLightMd md:dark:bg-circularDarkMd  sm:bg-circularLightSm sm:dark:bg-circularDarkSm lg:h-[80vh] sm:h-[60vh] xs:h-[70vh]">

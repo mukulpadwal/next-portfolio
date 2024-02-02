@@ -50,8 +50,8 @@ const Experience = () => {
   });
 
   return (
-    <div className="my-32">
-      <h2 className="font-bold text-8xl mb-32 w-full text-center sm:text-5xl sm:mb-16">
+    <div className="mt-32">
+      <h2 className="font-bold text-8xl pb-28 w-full text-center sm:text-5xl sm:mb-16">
         Experience
       </h2>
       <div ref={ref} className="w-[75%] mx-auto relative sm:mx-0 sm:w-full">
