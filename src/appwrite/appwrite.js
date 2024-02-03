@@ -1,23 +1,41 @@
 import conf from "@/conf/conf";
 import { Client, Databases, Query } from "appwrite";
 
-const client = new Client();
+export class DatabaseService {
+  client = new Client();
+  databases;
 
-client.setEndpoint(conf.appwriteUrl).setProject(conf.appwriteProjectID);
+  constructor() {
+    this.client
+      .setEndpoint(conf.appwriteUrl)
+      .setProject(conf.appwriteProjectID);
+    this.databases = new Databases(this.client, conf.appwriteDatabaseID);
+  }
 
-const databases = new Databases(client, conf.appwriteDatabaseID);
+  async getProjects(
+    queries = [
+      Query.select([
+        "type",
+        "title",
+        "summary",
+        "thumbNailImg",
+        "deployedLink",
+        "githubRepoLink",
+      ]),
+    ]
+  ) {
+    try {
+      return await this.databases.listDocuments(
+        conf.appwriteDatabaseID,
+        conf.appwriteCollectionID,
+        queries
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
+}
 
-export const promise = databases.listDocuments(
-  conf.appwriteDatabaseID,
-  conf.appwriteCollectionID,
-  [
-    Query.select([
-      "type",
-      "title",
-      "summary",
-      "thumbNailImg",
-      "deployedLink",
-      "githubRepoLink"
-  ]),
-  ]
-);
+const database = new DatabaseService();
+
+export default database;
