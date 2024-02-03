@@ -6,14 +6,20 @@ import FeaturedProject from "@/components/FeaturedProject";
 import Project from "@/components/Project";
 import database from "@/appwrite/appwrite";
 import TransitionEffect from "@/components/TransitionEffect";
+import FeaturedProjectSkeleton from "@/components/skeletons/FeaturedProjectSkeleton";
+import ProjectSkeleton from "@/components/skeletons/ProjectSkeleton";
 
 export default function Projects() {
   const [allProjects, setAllProjectsData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     database
       .getProjects()
-      .then((response) => setAllProjectsData(response.documents))
+      .then((response) => {
+        setAllProjectsData(response.documents);
+        setLoading(true);
+      })
       .catch((error) => console.log(error.message));
   }, []);
 
@@ -29,32 +35,44 @@ export default function Projects() {
 
           <div className="grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0">
             <div className="col-span-12">
-              <FeaturedProject
-                type={allProjects[0]?.type ?? ""}
-                title={allProjects[0]?.title ?? ""}
-                summary={allProjects[0]?.summary ?? ""}
-                thumbNailImg={allProjects[0]?.thumbNailImg ?? ""}
-                link={allProjects[0]?.deployedLink ?? ""}
-                gitHubLink={allProjects[0]?.githubRepoLink ?? ""}
-              />
+              {loading ? (
+                <FeaturedProject
+                  type={allProjects[0]?.type ?? ""}
+                  title={allProjects[0]?.title ?? ""}
+                  summary={allProjects[0]?.summary ?? ""}
+                  thumbNailImg={allProjects[0]?.thumbNailImg ?? ""}
+                  link={allProjects[0]?.deployedLink ?? ""}
+                  gitHubLink={allProjects[0]?.githubRepoLink ?? ""}
+                />
+              ) : (
+                <FeaturedProjectSkeleton />
+              )}
             </div>
             <div className="col-span-6 sm:col-span-12">
-              <Project
-                type={allProjects[1]?.type ?? ""}
-                title={allProjects[1]?.title ?? ""}
-                thumbNailImg={allProjects[1]?.thumbNailImg ?? ""}
-                link={allProjects[1]?.deployedLink ?? ""}
-                gitHubLink={allProjects[1]?.githubRepoLink ?? ""}
-              />
+              {loading ? (
+                <Project
+                  type={allProjects[1]?.type ?? ""}
+                  title={allProjects[1]?.title ?? ""}
+                  thumbNailImg={allProjects[1]?.thumbNailImg ?? ""}
+                  link={allProjects[1]?.deployedLink ?? ""}
+                  gitHubLink={allProjects[1]?.githubRepoLink ?? ""}
+                />
+              ) : (
+                <ProjectSkeleton />
+              )}
             </div>
             <div className="col-span-6 sm:col-span-12">
-              <Project
-                type={allProjects[2]?.type ?? ""}
-                title={allProjects[2]?.title ?? ""}
-                thumbNailImg={allProjects[2]?.thumbNailImg ?? ""}
-                link={allProjects[2]?.deployedLink ?? ""}
-                gitHubLink={allProjects[2]?.githubRepoLink ?? ""}
-              />
+              {loading ? (
+                <Project
+                  type={allProjects[2]?.type ?? ""}
+                  title={allProjects[2]?.title ?? ""}
+                  thumbNailImg={allProjects[2]?.thumbNailImg ?? ""}
+                  link={allProjects[2]?.deployedLink ?? ""}
+                  gitHubLink={allProjects[2]?.githubRepoLink ?? ""}
+                />
+              ) : (
+                <ProjectSkeleton />
+              )}
             </div>
           </div>
         </main>
