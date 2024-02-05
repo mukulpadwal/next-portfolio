@@ -6,15 +6,19 @@ import Blog from "@/components/Blog";
 import TransitionEffect from "@/components/TransitionEffect";
 import { useEffect, useState } from "react";
 import { GET_USER_ARTICLES, gql } from "@/hashode/hashnode";
+import FeaturedBlogSkeleton from "@/components/skeletons/FeaturedBlogSkeleton";
+import BlogSkeleton from "@/components/skeletons/BlogSkeleton";
 
 export default function Blogs() {
+  const [loading, setLoading] = useState(false);
   const [fetchedBlogs, setFetchedBlogs] = useState([]);
 
   useEffect(() => {
     gql(GET_USER_ARTICLES)
-      .then((response) =>
-        setFetchedBlogs(response.data.publication.posts.edges)
-      )
+      .then((response) => {
+        setFetchedBlogs(response.data.publication.posts.edges);
+        setLoading(true);
+      })
       .catch((error) => console.log(error.message));
   }, []);
 
@@ -28,15 +32,19 @@ export default function Blogs() {
             className="mb-16 !text-center !text-6xl xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl"
           />
           <ul className="w-full grid grid-cols-2 gap-16 lg:gap-8 md:grid-cols-1 md:gap-y-16">
-            {fetchedBlogs.slice(0,2).map((blog) => (
+            {fetchedBlogs.slice(0, 2).map((blog) => (
               <div key={blog.id}>
-                <FeaturedBlog
-                  thumbNailImg={blog.node.coverImage.url}
-                  title={blog.node.title}
-                  time={blog.node.readTimeInMinutes}
-                  summary={blog.node.brief}
-                  link={`https://mukulpadwal.hashnode.dev/${blog.node.slug}`}
-                />
+                {loading ? (
+                  <FeaturedBlog
+                    thumbNailImg={blog.node.coverImage.url}
+                    title={blog.node.title}
+                    time={blog.node.readTimeInMinutes}
+                    summary={blog.node.brief}
+                    link={`https://mukulpadwal.hashnode.dev/${blog.node.slug}`}
+                  />
+                ) : (
+                  <FeaturedBlogSkeleton />
+                )}
               </div>
             ))}
           </ul>
@@ -44,18 +52,20 @@ export default function Blogs() {
             All Blogs
           </h2>
           <ul className="w-full">
-          {
-            fetchedBlogs.slice(2,).map((blog) => (
+            {fetchedBlogs.slice(2).map((blog) => (
               <div key={blog.id}>
-                <Blog
-                  thumbNailImg={blog.node.coverImage.url}
-                  title={blog.node.title}
-                  link={`https://mukulpadwal.hashnode.dev/${blog.node.slug}`}
-                  date={blog.node.publishedAt}
-                />
+                {loading ? (
+                  <Blog
+                    thumbNailImg={blog.node.coverImage.url}
+                    title={blog.node.title}
+                    link={`https://mukulpadwal.hashnode.dev/${blog.node.slug}`}
+                    date={blog.node.publishedAt}
+                  />
+                ) : (
+                  <BlogSkeleton />
+                )}
               </div>
-            ))
-          }
+            ))}
           </ul>
         </main>
       </div>
