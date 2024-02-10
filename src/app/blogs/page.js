@@ -17,7 +17,9 @@ export default function Blogs() {
     gql(GET_USER_ARTICLES)
       .then((response) => {
         setFetchedBlogs(response.data.publication.posts.edges);
-        setLoading(true);
+        setTimeout(() => {
+          setLoading(true);
+        }, 1000);
       })
       .catch((error) => console.log(error.message));
   }, []);
