@@ -3,7 +3,6 @@
 import AnimatedText from "@/components/AnimatedText";
 import ContactMeForm from "@/components/ContactMeForm";
 import TransitionEffect from "@/components/TransitionEffect";
-import { Toaster } from "@/components/ui/toaster";
 
 const Contact = () => {
   return (
@@ -26,7 +25,6 @@ const Contact = () => {
           </p>
           <div className="w-3/4 lg:w-full h-full">
             <ContactMeForm />
-          <Toaster />
           </div>
         </main>
       </div>

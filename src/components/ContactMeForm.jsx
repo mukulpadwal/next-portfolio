@@ -44,24 +44,48 @@ const ContactMeForm = () => {
     },
   });
 
-  const onFormSubmit = (values) => {
-    toast({
-      title: "Message Sent Successfully!!!",
-    });
-    console.log(values, "clicked");
+  const onFormSubmit = async (values) => {
+    const { name, email, subject, message } = values;
+
+    const res = await fetch("/api/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) =>
+        toast({
+          title: "Hurray!!!",
+          description: `Your message has been sent.`,
+        })
+      )
+      .catch((error) =>
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: `There was a problem with your request. Please try again`,
+        })
+      );
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onFormSubmit)}>
-        <div className="flex flex-row justify-between items-center my-4">
+        <div className="flex flex-row sm:flex-col justify-between items-center my-4">
           <FormField
             type="text"
             className="w-full"
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem className="w-1/2 mr-2">
+              <FormItem className="w-1/2 sm:w-full mr-2 sm:mr-0 sm:my-2">
                 <FormLabel>Name : </FormLabel>
                 <FormControl>
                   <Input type="text" placeholder="Name..." {...field} />
@@ -74,7 +98,7 @@ const ContactMeForm = () => {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="w-1/2 ml-2">
+              <FormItem className="w-1/2 sm:w-full ml-2 sm:ml-0 sm:my-2">
                 <FormLabel>Email : </FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="Email..." {...field} />
