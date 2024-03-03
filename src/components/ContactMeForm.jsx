@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
+import emailjs from "@emailjs/browser";
 
 // Defining contact me form schema
 const formSchema = z.object({
@@ -33,6 +34,7 @@ const formSchema = z.object({
 
 const ContactMeForm = () => {
   const { toast } = useToast();
+  const formRef = useRef();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -44,37 +46,37 @@ const ContactMeForm = () => {
     },
   });
 
-  const onFormSubmit = async (values) => {
-    console.log(values);
-
-    await fetch("/api/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) =>
-        toast({
-          title: "Hurray!!!",
-          description: `Your message has been sent.`,
-        })
+  const onFormSubmit = async () => {
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_APP_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        {
+          publicKey: process.env.NEXT_PUBLIC_APP_EMAILJS_PUBLIC_KEY,
+        }
       )
-      .catch((error) =>
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: `There was a problem with your request. Please try again`,
-        })
+      .then(
+        () => {
+          toast({
+            title: "Hurray!!!",
+            description: `Your message has been sent.`,
+          });
+        },
+        (error) => {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: `There was a problem with your request. Please try again`,
+          });
+          console.log(error.message);
+        }
       );
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onFormSubmit)}>
+      <form ref={formRef} onSubmit={form.handleSubmit(onFormSubmit)}>
         <div className="flex flex-row sm:flex-col justify-between items-center my-4">
           <FormField
             type="text"
