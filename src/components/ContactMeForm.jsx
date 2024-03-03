@@ -45,22 +45,19 @@ const ContactMeForm = () => {
   });
 
   const onFormSubmit = async (values) => {
-    const { name, email, subject, message } = values;
+    console.log(values);
 
-    const res = await fetch("/api/send", {
+    await fetch("/api/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        subject: subject,
-        message: message,
-      }),
+      body: JSON.stringify(values),
     })
-      .then((res) => res.json())
-      .then((data) =>
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) =>
         toast({
           title: "Hurray!!!",
           description: `Your message has been sent.`,
