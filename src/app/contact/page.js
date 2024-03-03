@@ -12,7 +12,7 @@ const Contact = () => {
         <main className="w-full flex flex-col items-center justify-center text-dark dark:text-light">
           <AnimatedText
             text="Contact Me!"
-            className="mb-8 !text-center !text-6xl xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl"
+            className="mb-8 sm:mb-2 !text-center !text-6xl xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl"
           />
           <p className="mb-8 !text-center !text-xl xl:!text-xl lg:!text-center lg:!text-base md:!text-base sm:!text-xs">
             Thank you for taking the time to learn more about me and my work. If

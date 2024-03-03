@@ -58,6 +58,7 @@ const ContactMeForm = () => {
       )
       .then(
         () => {
+          form.reset();
           toast({
             title: "Hurray!!!",
             description: `Your message has been sent.`,
