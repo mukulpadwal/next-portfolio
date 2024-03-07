@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
       <Script id="" type="text/javascript">
         {(function () {
           emailjs.init({
-            publicKey: process.env.NEXT_PUBLIC_APP_EMAILJS_PUBLIC_KEY,
+            publicKey: conf.emailjsPublicKey,
           });
         })()}
       </Script>
