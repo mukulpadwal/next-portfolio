@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import emailjs from "@emailjs/browser";
+import conf from "@/conf/conf";
 
 // Defining contact me form schema
 const formSchema = z.object({
@@ -49,11 +50,11 @@ const ContactMeForm = () => {
   const onFormSubmit = async () => {
     emailjs
       .sendForm(
-        process.env.NEXT_PUBLIC_APP_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_APP_EMAILJS_TEMPLATE_ID,
+        conf.emailjsServiceID,
+        conf.emailjsTemplateID,
         formRef.current,
         {
-          publicKey: process.env.NEXT_PUBLIC_APP_EMAILJS_PUBLIC_KEY,
+          publicKey: conf.emailjsPublicKey,
         }
       )
       .then(

@@ -6,6 +6,7 @@ import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import emailjs from "@emailjs/browser";
+import conf from "@/conf/conf";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-mont" });
 
@@ -40,7 +41,7 @@ export default function RootLayout({ children }) {
       <Script id="" type="text/javascript">
         {(function () {
           emailjs.init({
-            publicKey: process.env.NEXT_PUBLIC_APP_EMAILJS_PUBLIC_KEY,
+            publicKey: conf.emailjsPublicKey,
           });
         })()}
       </Script>
