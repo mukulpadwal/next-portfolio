@@ -10,7 +10,6 @@ import TransitionEffect from "@/components/TransitionEffect";
 import conf from "@/conf/conf";
 
 export default function Home() {
-  console.log(conf);
   return (
     <>
       <TransitionEffect />
